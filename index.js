@@ -1,16 +1,34 @@
 const fs = require("fs");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+//make folder
+// const folderName = "Thapa";
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+// try {
+// 	if (!fs.existsSync(folderName)) {
+// 		fs.mkdirSync(folderName);
+// 	}
+// } catch (err) {
+// 	console.error("file already exist");
+// }
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+// making file and data
+// fs.writeFileSync(
+// 	"./Thapa/bio.txt",
+// 	"hello this is ratul,watching thapa technical"
+// );
 
-// const buf_data = fs.readFileSync("read.txt");
+//append data to the file
+// fs.appendFileSync("./Thapa/bio.txt", " so this is 6th video of the playlist");
 
-// org_data = buf_data.toString();
+//read data without buffer data
+// const data = fs.readFileSync("./Thapa/bio.txt", "utf8");
+// console.log(data);
 
-// console.log(org_data);
+//rename fila name
+// fs.renameSync("Thapa/bio.txt", "Thapa/myBio.txt");
 
-fs.renameSync("read.txt", "readWrite.txt");
+//delete a file
+// fs.unlinkSync("Thapa/myBio.txt");
+
+//delete a folder
+fs.rmdirSync("Thapa");
