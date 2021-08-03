@@ -1,16 +1,21 @@
+//async file system operations
+
 const fs = require("fs");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+//add data
+// fs.writeFile("read.txt", "7th video of playlist", (err) => {
+// 	console.log("file is created");
+// 	console.log(err);
+// });
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+//append file
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+// fs.appendFile("read.txt", " appending here", (err) => {
+// 	console.log(err);
+// });
 
-// const buf_data = fs.readFileSync("read.txt");
-
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+//read file in nodejs
+fs.readFile("read.txt", "utf-8", (err, data) => {
+	if (err) throw err;
+	console.log(data);
+});
