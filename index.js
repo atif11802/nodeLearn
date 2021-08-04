@@ -1,7 +1,10 @@
-// const add = require("./operator");
-const { add, sub, mult, name } = require("./operator");
+//npm init at first to get package.json
 
-console.log(add(5, 15));
-console.log(sub(50, 15));
-console.log(mult(5, 15));
-console.log(name);
+const chalk = require("chalk");
+//npm i chalk to color in termnal
+// console.log(chalk.white.underline.inverse("Hello world!"));
+
+var validator = require("validator");
+
+const res = validator.isEmail("ratul@gmail.com");
+console.log(res ? chalk.green.inverse(res) : chalk.red.inverse(res));
