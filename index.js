@@ -1,16 +1,26 @@
 const fs = require("fs");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+//creating folder
+// fs.mkdir("Thapa", (err) => {
+// 	console.log(err);
+// });
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+//creating file name
+// fs.writeFile("Thapa/bio.txt", "hwllo my name is ratul", (err) => {
+// 	console.log(err);
+// });
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+//append data in file
+// fs.appendFile("Thapa/bio.txt", " appending here", (err) => {
+// 	console.log(err);
+// });
 
-// const buf_data = fs.readFileSync("read.txt");
+//read data without buffer data
+// fs.readFile("Thapa/bio.txt", "utf-8", (error, data) => {
+// 	console.log(data);
+// });
 
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+//rename the file
+fs.rename("Thapa/bio.txt", "Thapa/mybio.txt", (err) => {
+	console.log(err);
+});
