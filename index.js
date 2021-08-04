@@ -24,3 +24,12 @@ const fs = require("fs");
 fs.rename("Thapa/bio.txt", "Thapa/mybio.txt", (err) => {
 	console.log(err);
 });
+
+
+fs.unlink("Thapa/myBio.txt", (err) => {
+	console.log(err);
+});
+
+fs.rmdir("Thapa", (err) => {
+	console.log(err);
+});
