@@ -8,3 +8,7 @@ var validator = require("validator");
 
 const res = validator.isEmail("ratul@gmail.com");
 console.log(res ? chalk.green.inverse(res) : chalk.red.inverse(res));
+
+///nodemon install
+// npm i nodemon -g;
+// nodemon index.js
