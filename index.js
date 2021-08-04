@@ -1,16 +1,10 @@
-const fs = require("fs");
+//npm init at first to get package.json
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const chalk = require("chalk");
+//npm i chalk to color in termnal
+// console.log(chalk.white.underline.inverse("Hello world!"));
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+var validator = require("validator");
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
-
-// const buf_data = fs.readFileSync("read.txt");
-
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+const res = validator.isEmail("ratul@gmail.com");
+console.log(res ? chalk.green.inverse(res) : chalk.red.inverse(res));
