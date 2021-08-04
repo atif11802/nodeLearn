@@ -1,26 +1,28 @@
-const fs = require("fs");
+const os = require("os");
 
-//creating folder
-// fs.mkdir("Thapa", (err) => {
-// 	console.log(err);
-// });
+//to check bit(32 0r 64 bit)
+// console.log(os.arch());
 
-//creating file name
-// fs.writeFile("Thapa/bio.txt", "hwllo my name is ratul", (err) => {
-// 	console.log(err);
-// });
+//memory available in ram
+// const freeMemory = os.freemem();
 
-//append data in file
-// fs.appendFile("Thapa/bio.txt", " appending here", (err) => {
-// 	console.log(err);
-// });
+// console.log(freeMemory);
 
-//read data without buffer data
-// fs.readFile("Thapa/bio.txt", "utf-8", (error, data) => {
-// 	console.log(data);
-// });
+// console.log(`${freeMemory / 1024 / 1024 / 1024} is my memory`);
 
-//rename the file
-fs.rename("Thapa/bio.txt", "Thapa/mybio.txt", (err) => {
-	console.log(err);
-});
+// total memory  in ram
+// const totalMemory = os.totalmem();
+// console.log(`${totalMemory / 1024 / 1024 / 1024} is my memory`);
+
+//hotname
+// console.log(os.hostname());
+
+//platform
+
+// console.log(os.platform());
+
+//dir
+// console.log(os.tmpdir());
+
+//od
+console.log(os.type());
