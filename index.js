@@ -1,16 +1,28 @@
-const fs = require("fs");
+const os = require("os");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+//to check bit(32 0r 64 bit)
+// console.log(os.arch());
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+//memory available in ram
+// const freeMemory = os.freemem();
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+// console.log(freeMemory);
 
-// const buf_data = fs.readFileSync("read.txt");
+// console.log(`${freeMemory / 1024 / 1024 / 1024} is my memory`);
 
-// org_data = buf_data.toString();
+// total memory  in ram
+// const totalMemory = os.totalmem();
+// console.log(`${totalMemory / 1024 / 1024 / 1024} is my memory`);
 
-// console.log(org_data);
+//hotname
+// console.log(os.hostname());
 
-fs.renameSync("read.txt", "readWrite.txt");
+//platform
+
+// console.log(os.platform());
+
+//dir
+// console.log(os.tmpdir());
+
+//od
+console.log(os.type());
