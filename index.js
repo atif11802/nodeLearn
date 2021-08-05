@@ -1,16 +1,31 @@
 const fs = require("fs");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const bioData = {
+	name: "atif",
+	age: 22,
+	nationality: "bangladeshi",
+};
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+// // console.log(bioData.nationality);
+// const jsonData = JSON.stringify(bioData);
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+// console.log(jsonData);
 
-// const buf_data = fs.readFileSync("read.txt");
+// console.log(JSON.parse(jsonData));
 
-// org_data = buf_data.toString();
+// 1 convert to jsonData ...
+//2 how to add this another file
+//3 read file
+//4 conver json to obj
+//consolelog
 
-// console.log(org_data);
+const jsonData = JSON.stringify(bioData);
 
-fs.renameSync("read.txt", "readWrite.txt");
+// fs.writeFile("json1.json", jsonData, (err) => {
+// 	console.log(err);
+// });
+
+fs.readFile("json1.json", "utf-8", (err, data) => {
+	const objData = JSON.parse(data);
+	console.log(data, objData);
+});
