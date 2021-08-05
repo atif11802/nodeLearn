@@ -1,16 +1,14 @@
-const fs = require("fs");
+(function () {
+	var a = "atif aslam";
+	module.exports = {
+		a,
+	};
+})();
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const { a } = require("./index");
+console.log(a);
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
-
-// fs.appendFileSync("read.txt", " welcome to my world 2");
-
-// const buf_data = fs.readFileSync("read.txt");
-
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+console.log(__dirname);
+console.log(__filename);
+// console.log(require);
+// console.log(module);
