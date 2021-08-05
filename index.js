@@ -1,16 +1,9 @@
-const fs = require("fs");
+const http = require("http");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const server = http.createServer((req, res) => {
+	res.end("hello from the other sides");
+});
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
-
-// fs.appendFileSync("read.txt", " welcome to my world 2");
-
-// const buf_data = fs.readFileSync("read.txt");
-
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+server.listen(8000, "127.0.0.1", () => {
+	console.log("listen on 9000");
+});
