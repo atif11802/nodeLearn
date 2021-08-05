@@ -1,14 +1,9 @@
-(function () {
-	var a = "atif aslam";
-	module.exports = {
-		a,
-	};
-})();
+const http = require("http");
 
-const { a } = require("./index");
-console.log(a);
+const server = http.createServer((req, res) => {
+	res.end("hello from the other sides");
+});
 
-console.log(__dirname);
-console.log(__filename);
-// console.log(require);
-// console.log(module);
+server.listen(8000, "127.0.0.1", () => {
+	console.log("listen on 9000");
+});
