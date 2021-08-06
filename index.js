@@ -1,9 +1,26 @@
-const EventEmitter = require("events");
+const fs = require("fs");
+const http = require("http");
 
-const event = new EventEmitter();
+const server = http.createServer();
 
-event.on("checkpage", (sc, msg) => {
-	console.log(`status code is ${sc} and the page msg id ${msg}`);
+server.on("request", (req, res) => {
+	// fs.readFile("input.txt", (err, data) => {
+	// 	res.end(data.toString());
+	// });
+
+	//streaming
+	const rstream = fs.createReadStream("input.txt");
+
+	rstream.on("data", (chunkdata) => {
+		res.write(chunkdata);
+	});
+	rstream.on("end", () => {
+		res.end();
+	});
+	rstream.on("error", (err) => {
+		console.log(err);
+		res.end;
+	});
 });
 
-event.emit("checkpage", 200, "ok");
+server.listen(9000, "127.0.0.1");
