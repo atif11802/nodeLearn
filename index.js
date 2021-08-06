@@ -1,16 +1,9 @@
-const fs = require("fs");
+const EventEmitter = require("events");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const event = new EventEmitter();
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+event.on("checkpage", (sc, msg) => {
+	console.log(`status code is ${sc} and the page msg id ${msg}`);
+});
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
-
-// const buf_data = fs.readFileSync("read.txt");
-
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+event.emit("checkpage", 200, "ok");
