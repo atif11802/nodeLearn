@@ -1,16 +1,30 @@
 const fs = require("fs");
+const http = require("http");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const server = http.createServer();
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+server.on("request", (req, res) => {
+	// fs.readFile("input.txt", (err, data) => {
+	// 	res.end(data.toString());
+	// });
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+	//streaming
+	// const rstream = fs.createReadStream("input.txt");
 
-// const buf_data = fs.readFileSync("read.txt");
+	// rstream.on("data", (chunkdata) => {
+	// 	res.write(chunkdata);
+	// });
+	// rstream.on("end", () => {
+	// 	res.end();
+	// });
+	// rstream.on("error", (err) => {
+	// 	console.log(err);
+	// 	res.end;
+	// });
 
-// org_data = buf_data.toString();
+	const rstream = fs.createReadStream("input.txt");
 
-// console.log(org_data);
+	rstream.pipe(res);
+});
 
-fs.renameSync("read.txt", "readWrite.txt");
+server.listen(9000, "127.0.0.1");
