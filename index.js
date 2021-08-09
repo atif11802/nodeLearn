@@ -1,30 +1,45 @@
-const fs = require("fs");
 const http = require("http");
+const fs = require("fs");
+var path = require("path");
+var requests = require("requests");
 
-const server = http.createServer();
+const homeFile = fs.readFileSync("home.html", "utf-8");
 
-server.on("request", (req, res) => {
-	// fs.readFile("input.txt", (err, data) => {
-	// 	res.end(data.toString());
-	// });
+const replaceval = (tempval, orgval) => {
+	let temperature = tempval.replace("{%tempval%}", orgval.main.temp);
+	temperature = temperature.replace("TempMin", orgval.main.temp_min);
+	temperature = temperature.replace("{%tempmax%}", orgval.main.temp_max);
+	temperature = temperature.replace("{%location%}", orgval.name);
+	temperature = temperature.replace("{%country%}", orgval.sys.country);
 
-	//streaming
-	// const rstream = fs.createReadStream("input.txt");
+	return temperature;
+};
 
-	// rstream.on("data", (chunkdata) => {
-	// 	res.write(chunkdata);
-	// });
-	// rstream.on("end", () => {
-	// 	res.end();
-	// });
-	// rstream.on("error", (err) => {
-	// 	console.log(err);
-	// 	res.end;
-	// });
+const server = http.createServer((req, res) => {
+	if (req.url === "/") {
+		// res.end(homeFile);
+		const data = requests(
+			"https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=51b8bd06158ab1f28c055f67c04118fa"
+		)
+			.on("data", (chunk) => {
+				const objData = JSON.parse(chunk);
+				const arrData = [objData];
+				const realTimeData = arrData
+					.map((val) => replaceval(homeFile, val))
+					.join("");
 
-	const rstream = fs.createReadStream("input.txt");
-
-	rstream.pipe(res);
+				res.write(realTimeData);
+			})
+			.on("end", (err) => {
+				if (err)
+					return console.log(
+						"connection closed due to errors",
+						err
+					);
+				res.end();
+			});
+		// data.pipe(res);
+	}
 });
 
-server.listen(9000, "127.0.0.1");
+server.listen(8000, "127.0.0.1");
