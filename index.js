@@ -1,16 +1,56 @@
-const fs = require("fs");
+const express = require("express");
+const app = express();
+const port = 8000;
+const path = require("path");
+// console.log(__dirname);
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+console.log(path.join(__dirname, "/public"));
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+const staticPath = path.join(__dirname, "/public");
+//built in middleware
+app.use(express.static(staticPath));
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+app.get("/", (req, res) => {
+	res.write(" <h1> hellooo atif</h1>");
+	res.write(" <h1> hellooo 1 atif</h1>");
+	res.write(" <h1> hellooo  2 atif</h1>");
+	res.send();
+});
 
-// const buf_data = fs.readFileSync("read.txt");
+app.get("/about", (req, res) => {
+	res.send(" <h1> hellooo about</h1> ");
+});
+app.get("/contact", (req, res) => {
+	res.send(" <h1> hellooo contact</h1> ");
+});
+// app.get("/temp", (req, res) => {
+// 	res.send([
+// 		{
+// 			name: "atif",
+// 			id: 1,
+// 			nationality: "bangladeshi",
+// 		},
+// 		{
+// 			name: "aslam",
+// 			id: 1,
+// 			nationality: "bangladeshi",
+// 		},
+// 	]);
+// });
 
-// org_data = buf_data.toString();
+// app.get("/temp", (req, res) => {
+// 	res.json([
+// 		{
+// 			name: "atif",
+// 			id: 1,
+// 			nationality: "bangladeshi",
+// 		},
+// 		{
+// 			name: "aslam",
+// 			id: 1,
+// 			nationality: "bangladeshi",
+// 		},
+// 	]);
+// });
 
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+app.listen(port, () => console.log(`app listening on port ${port}!`));
