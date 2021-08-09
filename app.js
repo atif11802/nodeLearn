@@ -1,16 +1,19 @@
 const express = require("express");
-var app = express();
-
-// get-read post-create put-update delete-delete
+const app = express();
+const port = 8000;
 
 app.get("/", (req, res) => {
-	res.send("hello this is express js");
+	res.send(" <h1> hellooo atif</h1> ");
 });
 
 app.get("/about", (req, res) => {
-	res.send("hello this is about");
+	res.send(" <h1> hellooo about</h1> ");
+});
+app.get("/contact", (req, res) => {
+	res.send(" <h1> hellooo contact</h1> ");
+});
+app.get("/temp", (req, res) => {
+	res.send(" <h1> hellooo temperature</h1> ");
 });
 
-app.listen(8000, () => {
-	console.log("listenning to port 8000");
-});
+app.listen(port, () => console.log(`app listening on port ${port}!`));
