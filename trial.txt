@@ -1,8 +1,0 @@
-51b8bd06158ab1f28c055f67c04118fa
-
-
-api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-
-
-
-https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=51b8bd06158ab1f28c055f67c04118fa
