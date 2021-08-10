@@ -7,16 +7,28 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<script src="app.js" defer></script>
+		<script
+			src="https://kit.fontawesome.com/93a9ec62e7.js"
+			crossorigin="anonymous"
+		></script>
 		<link rel="stylesheet" href="css/style.css" />
-		<title>trial</title>
+		<title>TO do</title>
 	</head>
 	<body>
-		<h1>ratullllll</h1>
-		<h2>hwaasdasdas</h2>
-		<p>hello ami atif plz love me</p>
-		<img
-			src="https://images.pexels.com/photos/7341731/pexels-photo-7341731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-			alt=""
-		/>
+		<header>
+			<h1>hey it's my todo</h1>
+		</header>
+
+		<form>
+			<input type="text" class="todo-input" />
+			<button class="todo-button" type="submit">
+				<i class="fas fa-plus-square"></i>
+			</button>
+		</form>
+
+		<div class="todo-container">
+			<ul class="todo-list"></ul>
+		</div>
 	</body>
 </html>
