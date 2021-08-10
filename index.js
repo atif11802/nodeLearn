@@ -1,16 +1,15 @@
-const fs = require("fs");
+const express = require("express");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+const app = express();
+const port = 8000;
+const path = require("path");
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+app.use(express.static(path.join(__dirname, "public")));
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+app.get("/", (req, res) => {
+	res.send("hello");
+});
 
-// const buf_data = fs.readFileSync("read.txt");
-
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+app.listen(port, () => {
+	console.log(`listening to port ${port}`);
+});
