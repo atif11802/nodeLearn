@@ -20,11 +20,24 @@ app.get("/", (req, res) => {
 	res.render("index", { name: "atif aslam ratul" });
 });
 
-app.get("/", (req, res) => {
-	res.send("hello");
-});
+// app.get("/", (req, res) => {
+// 	res.send("hello");
+// });
+
 app.get("/about", (req, res) => {
 	res.render("about", { name: "atif  ratul" });
+});
+
+///if you go about page then search more and that page doesnt exist than show something so /about/*
+
+app.get("/about/*", (req, res) => {
+	res.render("404", {
+		error: "oops!! this about page couldn't be found",
+	});
+});
+
+app.get("*", (req, res) => {
+	res.render("404", { error: "oops!! page didnt found" });
 });
 
 app.listen(port, () => {
