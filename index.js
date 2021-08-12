@@ -1,16 +1,22 @@
-const fs = require("fs");
+const express = require("express");
+const app = express();
+const path = require("path");
+const hbs = require("hbs");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+app.use(express.static(path.join(__dirname, "public")));
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "templates/views"));
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+hbs.registerPartials(path.join(__dirname, "templates/partials"));
+app.get("/", (req, res) => {
+	res.render("index", { name: "ratul" });
+});
 
-// const buf_data = fs.readFileSync("read.txt");
+app.get("/about", (req, res) => {
+	res.render("about");
+});
 
-// org_data = buf_data.toString();
-
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+app.listen(8000, () => {
+	console.log("listening on");
+});
