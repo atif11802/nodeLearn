@@ -18,6 +18,7 @@
   "homepage": "https://github.com/atif11802/nodeLearn#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.1.2"
+    "hbs": "^4.1.2",
+    "requests": "^0.3.0"
   }
 }
