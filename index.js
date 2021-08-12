@@ -1,16 +1,47 @@
-const fs = require("fs");
+const express = require("express");
+const app = express();
+const path = require("path");
+const hbs = require("hbs");
+var requests = require("requests");
 
-//creating a new file
-// fs.writeFileSync("read.txt", "welcome to my world");
+app.use(express.static(path.join(__dirname, "public")));
 
-// fs.writeFileSync("read.txt", "welcome to my world 1");
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "templates/views"));
 
-// fs.appendFileSync("read.txt", " welcome to my world 2");
+hbs.registerPartials(path.join(__dirname, "templates/partials"));
+app.get("/", (req, res) => {
+	res.render("index", { name: "ratul" });
+});
 
-// const buf_data = fs.readFileSync("read.txt");
+app.get("/about", (req, res) => {
+	// res.render("about");
+	requests(
+		`https://api.openweathermap.org/data/2.5/weather?q=${req.query.city}&appid=51b8bd06158ab1f28c055f67c04118fa`
+	)
+		.on("data", (chunk) => {
+			const objData = JSON.parse(chunk);
+			const arrData = [objData];
+			// const realTimeData = arrData
+			// 	.map((val) => replaceval(homeFile, val))
+			// 	.join("");
 
-// org_data = buf_data.toString();
+			// res.write(realTimeData);
+			console.log(arrData[0].main.temp);
+			res.send(
+				`temperature is  ${arrData[0].main.temp} and city is ${arrData[0].name}`
+			);
+		})
+		.on("end", (err) => {
+			if (err)
+				return console.log(
+					"connection closed due to errors",
+					err
+				);
+			res.end();
+		});
+});
 
-// console.log(org_data);
-
-fs.renameSync("read.txt", "readWrite.txt");
+app.listen(8000, () => {
+	console.log("listening on");
+});
