@@ -42,6 +42,10 @@ app.get("/about", (req, res) => {
 		});
 });
 
+app.get("/contact", (req, res) => {
+	res.render("contact", { name: req.query.name, age: req.query.age });
+});
+
 app.listen(8000, () => {
 	console.log("listening on");
 });
