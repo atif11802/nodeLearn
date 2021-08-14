@@ -1,8 +1,8 @@
 {
   "name": "node-js",
   "version": "1.0.0",
-  "description": "learning express",
-  "main": "app.js",
+  "description": "website usiing expres",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +18,6 @@
   "homepage": "https://github.com/atif11802/nodeLearn#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.1.2",
-    "requests": "^0.3.0"
+    "hbs": "^4.1.2"
   }
 }
